@@ -5,3 +5,4 @@ authors = ["Azhar Uddin <akhan@gainsight.com>"]
 edition = "2018"
 
 [dependencies]
+rand = "0.3.14"
