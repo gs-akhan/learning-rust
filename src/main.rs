@@ -15,6 +15,8 @@ fn main() {
     io::stdin().read_line(&mut guess)
         .expect("Failed to read line");
 
+    let guess:u32 = guess.trim().parse().expect("Enter valid number");
+
     println!("You guessed : {}", guess);
 
     let secret_number = rand::thread_rng().gen_range(1,100);
