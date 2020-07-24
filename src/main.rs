@@ -8,24 +8,26 @@ fn main() {
     
     println!("Welcome to Rust Guessing Game !!");
 
-    println!("Please enter your Guess"); 
+    loop {
+        println!("Please enter your Guess"); 
     
-    let mut guess = String::new();
+            let mut guess = String::new();
 
-    io::stdin().read_line(&mut guess)
-        .expect("Failed to read line");
+            io::stdin().read_line(&mut guess)
+                .expect("Failed to read line");
 
-    let guess:u32 = guess.trim().parse().expect("Enter valid number");
+            let guess:u32 = guess.trim().parse().expect("Enter valid number");
 
-    println!("You guessed : {}", guess);
+            println!("You guessed : {}", guess);
 
-    let secret_number = rand::thread_rng().gen_range(1,100);
+            let secret_number = rand::thread_rng().gen_range(1,100);
 
-    println!("Secret is {} ", secret_number);
+            println!("Secret is {} ", secret_number);
 
-    match guess.cmp(&secret_number) {
-        Ordering::Less => println!("Too small"),
-        Ordering::Greater => println!("Too big"),
-        Ordering::Equal => println!("You wil"),
+            match guess.cmp(&secret_number) {
+                Ordering::Less => println!("Too small"),
+                Ordering::Greater => println!("Too big"),
+                Ordering::Equal => println!("You wil"),
+            }
     }
 }
