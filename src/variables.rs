@@ -16,5 +16,9 @@ fn main() {
     //Specially used in place where we want to use same name 
     //for variables after assigning them different types.
 
+    //eg : 
 
+    let spaces = "    ";
+
+    let spaces = spaces.len();
 }
