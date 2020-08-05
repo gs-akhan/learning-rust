@@ -6,6 +6,15 @@
 // jump into how they work in Rust.
 
 fn main() {
+
+    //i8, i16, i32, i64
+    //u8, u16, u32, u64
     let age : i32 = 29;
     println!("{}", age);
+
+    let product = age * 100;
+
+    println!("{}", product);
+
+    //booleans
 }

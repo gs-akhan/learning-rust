@@ -7,7 +7,7 @@ use std::cmp::Ordering;
 fn main() {
     
     println!("Welcome to Rust Guessing Game !!");
-
+   
     loop {
         println!("Please enter your Guess"); 
     
