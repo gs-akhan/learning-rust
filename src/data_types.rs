@@ -21,5 +21,11 @@ fn main() {
     let is_new : bool = false;
     let is_old : bool = true;
     let _am = is_new || is_old;
+
+
+    // characters 
+
+    let c : char = 'A';
     
+
 }
