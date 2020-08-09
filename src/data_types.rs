@@ -26,6 +26,10 @@ fn main() {
     // characters 
 
     let c : char = 'A';
-    
+    // Rust’s char type represents a Unicode Scalar Value, which means
+    // it can represent a lot more than just ASCII. 
+    // Accented letters, Chinese/Japanese/Korean ideographs, emoji, and zero width spaces are
+    // all valid char types in Rust. Unicode Scalar Values range from U+0000
+    // to U+D7FF and U+E000 to U+10FFFF inclusive
 
 }
