@@ -33,4 +33,17 @@ fn main() {
     // to U+D7FF and U+E000 to U+10FFFF inclusive
 
     // More to follow
+
+    let tup : (String, i32) = ("Azhar".to_string(), 29);
+    println!("{}", tup.0);
+    
+    let vect : (i32, i32) = (0,1);
+
+    println!("{}", vect.1);
+    
+    let active:(bool, bool) = (false, false);
+    
+    println!("{}", active.1);
+
+
 }
