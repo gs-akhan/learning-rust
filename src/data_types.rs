@@ -34,6 +34,7 @@ fn main() {
 
     // More to follow
 
+    // Tuples
     let tup : (String, i32) = ("Azhar".to_string(), 29);
     println!("{}", tup.0);
     
@@ -45,5 +46,11 @@ fn main() {
     
     println!("{}", active.1);
 
+    //Arrays - Array are of fixed size. Arrays are just like tuples except that
+    // all elements have the same data types. 
+
+    let arr  = [1,2,3,4,5];
+
+    println!("{}". arr[1]);
 
 }
