@@ -23,6 +23,21 @@ fn main() {
     let str = data.to_string();
     greet(str);
 
+
+    //Substring;
+
+    let complete_string = String::from("Rust is a Symtems Programming Language");
+
+    let sub_str = &complete_string[0..10];
+    
+    sub_str.to_string().push_str("More Data");
+
+
+    // let new_owner = sub_str;
+
+    println!("Substring : {} ", sub_str);
+    println!("Orig String {}", complete_string);
+
 }
 
 
