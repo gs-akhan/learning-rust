@@ -12,10 +12,10 @@ fn main() {
     println!("{} {}", s1, s2);
 
 
-    let name = String::from("Azhar");
+    let mut name = String::from("Azhar");
 
     print_size(&name);
-
+    add_str(&mut name);
     println!("Origanal String {} : ", name);
 
 
@@ -23,4 +23,8 @@ fn main() {
 
 fn print_size(str : &String) {
     println!("{}", str.len());
+}
+
+fn add_str(str : &mut String) {
+    str.push_str(" Thank you");
 }
