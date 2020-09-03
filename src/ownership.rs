@@ -10,4 +10,17 @@ fn main() {
     //If you don;t use the clone then the 
     let s2 = s1.clone();
     println!("{} {}", s1, s2);
+
+
+    let name = String::from("Azhar");
+
+    print_size(&name);
+
+    println!("Origanal String {} : ", name);
+
+
+}
+
+fn print_size(str : &String) {
+    println!("{}", str.len());
 }
