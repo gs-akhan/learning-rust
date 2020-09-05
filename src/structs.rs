@@ -15,6 +15,15 @@ fn main() {
         active: true,
     };
 
+    let shtl = User {
+        user_name : String::from("Shtl"),
+        email : String::from("ahha@gmail.com"),
+        ..azhar
+    };
+
+
+    println!("S Name {}",shtl.user_name);
+
     println!("Name is : {}", azhar.user_name);
     println!("Age is : {}", azhar.age);
     println!("email is : {}", azhar.email);
