@@ -17,7 +17,11 @@ fn main() {
     print_size(&name);
     add_str(&mut name);
     println!("Origanal String {} : ", name);
+    
 
+    // Borrow
+    // Referernce 
+    // Mutable borrow. 
 
 }
 
