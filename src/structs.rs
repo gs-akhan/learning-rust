@@ -1,12 +1,15 @@
+#[derive(Debug)]
+struct User {
+    user_name: String,
+    email: String,
+    age: i32,
+    active: bool,
+}
+
 fn main() {
     let name = String::from("We are in Structs");
     println!("{}", name);
-    struct User {
-        user_name: String,
-        email: String,
-        age: i32,
-        active: bool,
-    };
+    
 
     let azhar = User {
         user_name: String::from("Azhar"),
@@ -28,4 +31,5 @@ fn main() {
     println!("Age is : {}", azhar.age);
     println!("email is : {}", azhar.email);
     println!("Active is : {}", azhar.active);
+    println!("{:?}", azhar);
 }
