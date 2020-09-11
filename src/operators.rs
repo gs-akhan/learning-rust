@@ -7,7 +7,5 @@ fn main() {
     array.iter()
         .map(|x| x * 2)
         .filter(|x| *x > 4)
-        .for_each(|x| println!("{}", x));
-
-    
+        .for_each(|x| println!("{}", x));   
 }
