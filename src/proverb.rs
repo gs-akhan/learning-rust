@@ -19,6 +19,5 @@ fn build_proverb(list: &[&str]) -> String {
             ));
         }
     }
-    
     result.join("\n")
 }
