@@ -9,6 +9,5 @@ fn main() {
     println!("{}", "Printin using Map");
     languages.iter().for_each(|x| println!("{}", x));
 
-    //
 
 }

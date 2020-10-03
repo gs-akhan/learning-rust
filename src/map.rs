@@ -5,5 +5,4 @@ fn main() {
 
     upp_names.iter().for_each(|x| println!("{}", x));
 
-
 }
