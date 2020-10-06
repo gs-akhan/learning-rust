@@ -1,3 +1,3 @@
 fn main() {
-    println!("{}", "--Finding Prime Factors===");
+    println!("{}", "--Finding Prime Factors---");
 }
