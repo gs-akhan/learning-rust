@@ -14,7 +14,7 @@ impl HighScores {
     }
 
     pub fn latest(&self) -> Option<u32> {
-        unimplemented!("Return the latest (last) score")
+        Some(10 as u32)
     }
 
     pub fn personal_best(&self) -> Option<u32> {
@@ -30,4 +30,5 @@ fn main() {
     println!("Hello Structs with Methods !!");
     let a = HighScores::new(&[30, 50, 20, 70]);
     a.scores().iter().for_each(|x| println!("{}", x));
+    println!("Last {}", a.latest().unwrap());
 }
