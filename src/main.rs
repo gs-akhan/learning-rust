@@ -7,12 +7,19 @@ use rocket::*;
 
 fn main() {
     println!("Welcome to Rust Guessing Game !!");
-    rocket::ignite().mount("/", routes![hello]).launch();
+    rocket::ignite()
+        .mount("/", routes![hello, get_name])
+        .launch();
 }
 
 #[get("/hello")]
 fn hello() -> String {
     format!("Hello, This is my first API Rust!")
+}
+
+#[get("/hello/<name>")]
+fn get_name(name: String) -> String {
+    format!("My Name is : {}", name)
 }
 
 // let value: BigUint = 1.to_bigint().unwrap();
