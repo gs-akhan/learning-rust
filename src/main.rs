@@ -8,7 +8,7 @@ use rocket::*;
 fn main() {
     println!("Welcome to Rust Guessing Game !!");
     rocket::ignite()
-        .mount("/", routes![hello, get_name])
+        .mount("/", routes![hello, get_name, set_name])
         .launch();
 }
 
@@ -20,6 +20,11 @@ fn hello() -> String {
 #[get("/hello/<name>")]
 fn get_name(name: String) -> String {
     format!("My Name is : {}", name)
+}
+
+#[post("/setname/<name>")]
+fn set_name(name: String) -> String {
+    format!("Data Posted successfully 🚀 ")
 }
 
 // let value: BigUint = 1.to_bigint().unwrap();
