@@ -4,14 +4,19 @@
 // use std::cmp::Ordering;
 // use std::io;
 use rocket::*;
+use std::fs::File;
 
 fn main() {
     println!("Welcome to Rust Guessing Game !!");
     rocket::ignite()
-        .mount("/", routes![hello, get_name, set_name])
+        .mount("/", routes![index, hello, get_name, set_name])
         .launch();
 }
 
+#[get("/")] 
+fn index() -> File {
+    File::open("templates/index.html").expect("404, No file Found")
+}
 #[get("/hello")]
 fn hello() -> String {
     format!("Hello, This is my first API Rust!")
