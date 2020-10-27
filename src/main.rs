@@ -47,7 +47,9 @@ fn get_todos() -> JsonValue {
     })
 }
 
-#[get("/todojson")]
+
+//
+#[get("/todosjson")]
 fn get_todo_json() -> Json<Task> {
     let a = Task{
         name : "Lets Learn Rust".to_string(),
