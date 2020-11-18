@@ -16,6 +16,13 @@ let num:i32 = str.parse().unwrap().expect(0);
 // If not able parse then returns 0
 ```
 
+3. Iterate over vec
+
+```
+let data = vec!["Azhar", "Sheetal", "Ganga"];
+data.iter().for_each(|x| println!("{}", x));
+```
+
 // let value: BigUint = 1.to_bigint().unwrap();
 
 // loop {
