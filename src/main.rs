@@ -50,11 +50,16 @@ fn get_todos() -> JsonValue {
 
 //
 #[get("/todosjson")]
-fn get_todo_json() -> Json<Task> {
+fn get_todo_json() -> Json<Vec<Task>> {
     let a = Task{
         name : "Lets Learn Rust".to_string(),
         status : true
     };
 
-    Json(a)
+    let b = Task {
+        name : "Lets learn more Rust !!".to_string(),
+        status : true
+    };
+
+    Json(vec![a, b])
 }
