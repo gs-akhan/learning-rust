@@ -1,15 +1,22 @@
 #![feature(proc_macro_hygiene, decl_macro)]
+#[macro_use] extern crate rocket;
+#[macro_use] extern crate rocket_contrib;
+#[macro_use] extern crate serde_derive;
 
-// use rand::Rng;
-// use std::cmp::Ordering;
-// use std::io;
+#[cfg(test)] mod tests;
+
+use serde::Serialize;
 use rocket::*;
 use std::fs::File;
+use rocket_contrib::json::{Json, JsonValue};
+
+#[derive(Serialize)]
+struct Task { name : String, status  : bool }
 
 fn main() {
     println!("Welcome to Rust Guessing Game !!");
     rocket::ignite()
-        .mount("/", routes![index, hello, get_name, set_name])
+        .mount("/", routes![index, hello, get_name, set_name,get_todos, get_todo_json])
         .launch();
 }
 
@@ -32,34 +39,20 @@ fn set_name(name: String) -> String {
     format!("Data Posted successfully 🚀 ")
 }
 
-// let value: BigUint = 1.to_bigint().unwrap();
+#[get("/todos")]
+fn get_todos() -> JsonValue {
+    json!({
+        "status": "error",
+        "reason": "Resource was not found."
+    })
+}
 
-// loop {
-//     println!("Please enter your Guess");
+#[get("/todojson")]
+fn get_todo_json() -> Json<Task> {
+    let a = Task{
+        name : "Lets Learn Rust".to_string(),
+        status : true
+    };
 
-//     let mut guess = String::new();
-
-//     io::stdin()
-//         .read_line(&mut guess)
-//         .expect("Failed to read line");
-
-//     let guess: u32 = match guess.trim().parse() {
-//         Ok(num) => num,
-//         Err(_) => continue,
-//     };
-
-//     println!("You guessed : {}", guess);
-
-//     let secret_number = rand::thread_rng().gen_range(1, 100);
-
-//     println!("Secret is {} ", secret_number);
-
-//     match guess.cmp(&secret_number) {
-//         Ordering::Less => println!("Too small"),
-//         Ordering::Greater => println!("Too big"),
-//         Ordering::Equal => {
-//             println!("You win");
-//             break;
-//         }
-//     }
-// }
+    Json(a)
+}
