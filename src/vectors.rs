@@ -12,5 +12,6 @@ fn main() {
     //     names.set_len(1);    
     // }
 
+    // cloning a part of vector. clone
     let new_names = Vec::from_iter(names[1..2]).iter().clone();
 }
