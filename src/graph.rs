@@ -1,11 +1,13 @@
 #[allow(unused_imports)]
-
 use graph::graph_items::node::Node;
-
+use graph::*;
 fn main() {
     println!("Learning Graph");
     let azhar = Node::new("Azhar").with_attributes(&[("name", "azhar"), ("roll_no", "21")]);
-    println!("{:?}", azhar);
+    println!("This is node {:?}", azhar);
+    let g = Graph::new().with_nodes(vec![azhar]);
+
+    println!("This is Graph {:?}", g);
 }
 
 pub mod graph {
@@ -18,6 +20,21 @@ pub mod graph {
         nodes: Vec<graph_items::node::Node>,
         edges: Vec<graph_items::edge::Edge>,
         attributes: HashMap<String, String>,
+    }
+
+    impl Graph {
+        pub fn new() -> Self {
+            Graph {
+                nodes: vec![],
+                edges: vec![],
+                attributes: HashMap::new(),
+            }
+        }
+
+        pub fn with_nodes(mut self, nodes: Vec<graph_items::node::Node>) -> Self {
+            self.nodes = nodes;
+            self
+        }
     }
 
     pub mod graph_items {
@@ -49,8 +66,23 @@ pub mod graph {
         }
 
         pub mod edge {
+            use std::collections::HashMap;
             #[derive(Debug, Eq, PartialEq)]
-            pub struct Edge {}
+            pub struct Edge {
+                from: String,
+                to: String,
+                attributes: HashMap<String, String>,
+            }
+
+            impl Edge {
+                pub fn new(from: String, to: String) -> Self {
+                    Edge {
+                        from: String::from(from),
+                        to: String::from(to),
+                        attributes: HashMap::new(),
+                    }
+                }
+            }
         }
     }
 }
