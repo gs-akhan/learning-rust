@@ -1,26 +1,65 @@
 #![feature(proc_macro_hygiene, decl_macro)]
-#[macro_use] extern crate rocket;
-#[macro_use] extern crate rocket_contrib;
-#[macro_use] extern crate serde_derive;
+#[warn(unused_variables)]
+#[macro_use]
+extern crate rocket;
+#[macro_use]
+extern crate rocket_contrib;
+#[macro_use]
+extern crate serde_derive;
 
-#[cfg(test)] mod tests;
+extern crate serde_json;
 
-use serde::Serialize;
+use serde_json::Value as JValue;
+
 use rocket::*;
-use std::fs::File;
 use rocket_contrib::json::{Json, JsonValue};
+use std::fs::File;
 
 #[derive(Serialize)]
-struct Task { name : String, status  : bool }
+struct Task {
+    name: String,
+    status: bool,
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+struct Person {
+    name: String,
+    age: i32,
+    is_male: bool,
+}
 
 fn main() {
+    let json_string = r#"
+        {
+            "name" : "Azhar",
+            "age" : 30,
+            "is_male" : true
+        }
+    "#;
+
+    let res = serde_json::from_str(json_string);
+
+    if res.is_ok() {
+        let p: JValue = res.unwrap();
+        //let new_p: Person = res.unwrap();
+
+        // println!("Name is {}", new_p.name);
+
+        println!("Name is {:?}", p["name"].as_str().unwrap());
+    } else {
+        println!("Could not parse the json {:?}", res.unwrap());
+    }
+
     println!("Welcome to Rust Guessing Game !!");
     rocket::ignite()
-        .mount("/", routes![index, hello, get_name, set_name,get_todos, get_todo_json])
+        .mount(
+            "/",
+            routes![index, hello, get_name, set_name, get_todos, get_todo_json],
+        )
         .launch();
 }
 
-#[get("/")] 
+#[get("/")]
 fn index() -> File {
     File::open("templates/index.html").expect("404, No file Found")
 }
@@ -47,18 +86,17 @@ fn get_todos() -> JsonValue {
     })
 }
 
-
 //
 #[get("/todosjson")]
 fn get_todo_json() -> Json<Vec<Task>> {
-    let a = Task{
-        name : "Lets Learn Rust".to_string(),
-        status : true
+    let a = Task {
+        name: "Lets Learn Rust".to_string(),
+        status: true,
     };
 
     let b = Task {
-        name : "Lets learn more Rust !!".to_string(),
-        status : true
+        name: "Lets learn more Rust !!".to_string(),
+        status: true,
     };
 
     Json(vec![a, b])
