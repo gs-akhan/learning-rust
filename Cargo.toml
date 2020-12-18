@@ -17,3 +17,11 @@ serde_derive = "1.0"
 version = "*"
 default-features = false
 features = ["json"]
+
+[[bin]]
+name = "proverb"
+path = "src/proverb.rs"
+
+[[bin]]
+name = "request"
+path = "src/request.rs"
