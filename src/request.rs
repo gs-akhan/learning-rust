@@ -1,3 +1,6 @@
+use log::*;
+
 fn main() {
-    println!("This is request bin");
+    println!("Azhar is here");
+    info!("New position: x: {}, y: {}", 1, 2);
 }
