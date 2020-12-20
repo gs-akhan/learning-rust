@@ -3,8 +3,8 @@ use std::process::Command;
 fn main() {
     println!("Executing a command");
 
-    let mut cmd = Command::new("python");
-    cmd.arg("python_example.py");
+    let mut cmd = Command::new("ssh");
+    cmd.arg("akhan-dev@10.0.0.31");
 
     match cmd.output() {
         Ok(o) => unsafe {

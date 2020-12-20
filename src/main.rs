@@ -9,8 +9,11 @@ extern crate serde_derive;
 
 extern crate serde_json;
 
+use log::debug;
 use serde_json::Value as JValue;
+use simplelog::{ConfigBuilder, LevelFilter, SimpleLogger};
 
+use log::*;
 use rocket::*;
 use rocket_contrib::json::{Json, JsonValue};
 use std::fs::File;
@@ -29,6 +32,13 @@ struct Person {
 }
 
 fn main() {
+    let config = ConfigBuilder::new()
+        .set_target_level(LevelFilter::Trace)
+        .build();
+    let _ = SimpleLogger::init(LevelFilter::Debug, config);
+
+    log::debug!("{}", "<<<<<<<<<<<<<<<<<<< Azhar is here >>>>>>>>");
+
     let json_string = r#"
         {
             "name" : "Azhar",
