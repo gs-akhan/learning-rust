@@ -8,6 +8,16 @@ use log::*;
 struct Ip {
     origin: String,
 }
+#[derive(Serialize, Deserialize, Debug)]
+struct Book {
+    name: String,
+    imageurl: String,
+}
+#[derive(Serialize, Deserialize, Debug)]
+struct Books {
+    data: Vec<Book>,
+}
+
 #[tokio::main]
 async fn main() {
     println!("Azhar is here");
@@ -21,7 +31,13 @@ async fn main() {
             println!("WE are in the spwan");
         }));
     });
-    get_data().await;
+    // get_data().await;
+    let resp = get_json().await;
+    match resp {
+        Err(e) => println!("Error {}", e),
+        // Ok(d) => println!("Printing Name of Book {:?}", d.data[0].name),
+        Ok(d) => println!("Printing Entire JSON : {:?}", d),
+    }
 }
 
 async fn get_data() {
@@ -32,4 +48,12 @@ async fn get_data() {
         .await
         .unwrap();
     println!("{:?}", body);
+}
+
+async fn get_json() -> Result<Books, Box<dyn std::error::Error>> {
+    let json: Books = reqwest::get("https://pokemon.proxy.beeceptor.com/books")
+        .await?
+        .json::<Books>()
+        .await?;
+    Ok(json)
 }
