@@ -32,13 +32,6 @@ struct Person {
 }
 
 fn main() {
-    let config = ConfigBuilder::new()
-        .set_target_level(LevelFilter::Trace)
-        .build();
-    let _ = SimpleLogger::init(LevelFilter::Debug, config);
-
-    log::debug!("{}", "<<<<<<<<<<<<<<<<<<< Azhar is here >>>>>>>>");
-
     let json_string = r#"
         {
             "name" : "Azhar",
