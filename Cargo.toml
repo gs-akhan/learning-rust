@@ -29,3 +29,7 @@ path = "src/proverb.rs"
 [[bin]]
 name = "request"
 path = "src/request.rs"
+
+[[bin]]
+name = "http"
+path = "src/http.rs"
