@@ -42,16 +42,9 @@ async fn main() {
             println!("{:?}", data);
         }
     }
-
-    // let resp = get_json().await;
-    // match resp {
-    //     Err(e) => println!("Error {}", e),
-    //     // Ok(d) => println!("Printing Name of Book {:?}", d.data[0].name),
-    //     Ok(d) => println!("Printing Entire JSON : {:?}", d),
-    // }
 }
 
-async fn get_data() -> Result<Response, Box<std::error::Error>> {
+async fn get_data() -> Result<Response, Box<dyn std::error::Error>> {
     let body = reqwest::get("https://www.google.com").await?;
     Ok(body)
 }
