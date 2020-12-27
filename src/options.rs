@@ -13,7 +13,7 @@ fn main() {
         None => println!("We found nothing"),
     }
 
-    let names = vec!["Azhar", "khan"];
+    let names = vec!["Azhar", "khan", "Sheetal", "John"];
     names.iter().for_each(|x| println!("{}", x));
 }
 
