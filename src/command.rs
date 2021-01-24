@@ -4,7 +4,7 @@ fn main() {
     println!("Executing a command");
 
     let mut cmd = Command::new("ssh");
-    cmd.arg("akhan-dev@10.0.0.31");
+    cmd.arg("");
 
     match cmd.output() {
         Ok(o) => unsafe {
